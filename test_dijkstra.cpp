@@ -16,13 +16,12 @@ int main() {
 
 	dataFile.open("nqmq.dat");
 	dataFile >> numPoints;
-	std::cout<<numPoints;
 	std::cout << "menu:" << std::endl;
 	for (int i = 0; i < numPoints; i++) {
 		dataFile >> city;
 		g.addVertex(city);
 		std::cout << i << " : " << city << std::endl; //menu
-	} 
+	}	
 	g.resetEdges();
 	dataFile >> p; // source
 	dataFile >> q; // destination
@@ -37,19 +36,14 @@ int main() {
 	}
 	dataFile.close();
 
-
-	cout << "TEST 1. Los Angeles to Boston" << endl;
-	p = g.dijkstra(4, 1);
-	cout << "*** Final distance: " << p << " miles." << endl;
-	if (p != 2602) cout << "TEST FAILED";
-	else cout << "Test passed";
-	cout << endl << endl;
-
-	cout << "TEST 2. San Francisco to Miami" << endl;
-	p = g.dijkstra(7, 5);
-	cout << "*** Final distance: " << p << " miles." << endl;
-	if (p != 3056) cout << "TEST FAILED";
-	else cout << "Test passed";
-	cout << endl << endl;
-
+		int start, end;
+		std::cout << std::endl;
+		std::cout << "From:";
+		std::cin >> start;
+		std::cout << "To:";
+		std::cin >> end;
+		std::cout << endl;
+		p = g.dijkstra(start, end);
+		std::cout << std::endl;
+		std::cout << "Distance: " << p << " Miles" << std::endl;
 }
